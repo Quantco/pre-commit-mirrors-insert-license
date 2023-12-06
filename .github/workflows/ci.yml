@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  env:
+    name: Test env
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Set up Conda env
+        uses: mamba-org/setup-micromamba@db1df3ba9e07ea86f759e98b575c002747e9e757
+        with:
+          environment-file: environment.yml
+          environment-name: test-env
+      - name: Check 'insert-license' executable is available
+        run: |
+          insert-license --help
