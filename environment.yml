@@ -1,0 +1,4 @@
+channels:
+  - conda-forge
+dependencies:
+  - insert-license-header=1.0.1
