@@ -1,0 +1,26 @@
+name: Tag on version bump
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: Quantco/ui-actions/version-metadata@v1
+        id: version-metadata
+        with:
+          file: environment.yml
+          token: ${{ secrets.GITHUB_TOKEN }}
+          version-extraction-override: 'regex:\s+- insert-license-header=(\d+.\d+.\d+)'
+      - name: Bump tag
+        if: steps.version-metadata.outputs.changed == 'true'
+        run: |
+          version="${{ steps.version-metadata.outputs.newVersion }}"
+          git tag "$version"
+          git push origin "$version"
