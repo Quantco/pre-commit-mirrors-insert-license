@@ -5,8 +5,9 @@ This pre-commit hook automatically inserts our license header at the beginning o
 Usage: (in `.pre-commit-config.yaml`)
 
 ```
-- repo: https://github.com/Quantco/pre-commit-insert-license
-    rev: 1.0.1
+repos:
+  - repo: https://github.com/Quantco/pre-commit-insert-license
+    rev: "1.0.1"
     hooks:
       - id: insert-license
         types: [python]
@@ -16,7 +17,6 @@ Usage: (in `.pre-commit-config.yaml`)
           - --dynamic-years
           - --comment-style
           - "#"
-
 ```
 
 
