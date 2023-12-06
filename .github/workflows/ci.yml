@@ -23,3 +23,4 @@ jobs:
       - name: Check 'insert-license' executable is available
         run: |
           insert-license --help
+        shell: bash -l {0}
