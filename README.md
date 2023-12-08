@@ -12,18 +12,29 @@ repos:
       - id: insert-license
         types: [python]
         args:
-          - --license-base64
-          - "Q29weXJpZ2h0IChjKSBRdWFudENvIHt5ZWFyX3N0YXJ0fS17eWVhcl9lbmR9ClNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBMaWNlbnNlUmVmLVF1YW50Q28K"
           - --dynamic-years
           - --comment-style
           - "#"
 ```
 
+This hook uses our license header by default.
 
-The string contained in the example is a base64 encoded string of the license header we want to use:
+However, you can overwrite this default header by first creating your own base64 encoded string:
 ```
-$ echo "Copyright (c) QuantCo {year_start}-{year_end}\nSPDX-License-Identifier: LicenseRef-QuantCo" | base64
-Q29weXJpZ2h0IChjKSBRdWFudENvIHt5ZWFyX3N0YXJ0fS17eWVhcl9lbmR9ClNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBMaWNlbnNlUmVmLVF1YW50Q28K
+$ echo "Copyright (C) 2042, PearCorp, Inc.\nSPDX-License-Identifier: LicenseRef-PearCorp" | base64
+Q29weXJpZ2h0IChDKSAyMDQyLCBQZWFyQ29ycCwgSW5jLgpTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogTGljZW5zZVJlZi1QZWFyQ29ycAo=
+```
+And then supplying it to the hook:
+```
+[...]
+- id: insert-license
+        types: [python]
+        args:
+          - --license-base64
+          - "Q29weXJpZ2h0IChDKSAyMDQyLCBQZWFyQ29ycCwgSW5jLgpTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogTGljZW5zZVJlZi1QZWFyQ29ycAo="
+          - --dynamic-years
+          - --comment-style
+          - "#"
 ```
 
 Other comment styles:
