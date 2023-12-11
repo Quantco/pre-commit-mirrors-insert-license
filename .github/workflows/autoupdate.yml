@@ -19,7 +19,7 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
       - name: Set up Conda env
-        uses: mamba-org/setup-micromamba@db1df3ba9e07ea86f759e98b575c002747e9e757
+        uses: mamba-org/setup-micromamba@8752438cc2755ab7d0de2a8d70b694f5586baae8
         with:
           environment-file: environment.yml
           environment-name: check-env
@@ -35,7 +35,7 @@ jobs:
             echo "pkgname=$pkgname" >> "$GITHUB_OUTPUT"
             echo "new-version=$new_version" >> "$GITHUB_OUTPUT"
           fi
-      - uses: peter-evans/create-pull-request@f5ba48ac1e522e5e1b7b04e2ea86f584e5bf4704
+      - uses: peter-evans/create-pull-request@4e1ec66aad842f4c74dd29e21f9490a53502eaef
         if: steps.versions.outputs.pkgname
         with:
           commit-message: "Update ${{ steps.versions.outputs.pkgname }} to ${{ steps.versions.outputs.new-version }}"
