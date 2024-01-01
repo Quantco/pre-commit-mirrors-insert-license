@@ -17,6 +17,8 @@ repos:
           - "#"
 ```
 
+> :warning: In order for this hook to work properly, ensure that the entire git history is fetched during `pre-commit-checks`.
+
 This hook uses our license header by default.
 
 However, you can overwrite this default header by first creating your own base64 encoded string:
