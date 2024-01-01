@@ -35,7 +35,7 @@ jobs:
             echo "pkgname=$pkgname" >> "$GITHUB_OUTPUT"
             echo "new-version=$new_version" >> "$GITHUB_OUTPUT"
           fi
-      - uses: peter-evans/create-pull-request@1a0e857f60ce2280b9a139b2c5b38c64e9ad03ab
+      - uses: peter-evans/create-pull-request@153407881ec5c347639a548ade7d8ad1d6740e38
         if: steps.versions.outputs.pkgname
         with:
           commit-message: "Update ${{ steps.versions.outputs.pkgname }} to ${{ steps.versions.outputs.new-version }}"
