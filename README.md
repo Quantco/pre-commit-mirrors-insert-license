@@ -7,7 +7,7 @@ Usage: (in `.pre-commit-config.yaml`)
 ```
 repos:
   - repo: https://github.com/Quantco/pre-commit-insert-license
-    rev: "1.0.1"
+    rev: "1.1.0"
     hooks:
       - id: insert-license
         types: [python]
