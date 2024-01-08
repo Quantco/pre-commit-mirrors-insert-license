@@ -17,7 +17,8 @@ repos:
           - "#"
 ```
 
-> :warning: In order for this hook to work properly, ensure that the entire git history is fetched during `pre-commit-checks`.
+> [!WARNING]
+> In order for this hook to work properly, ensure that the entire git history is fetched during `pre-commit-checks`.
 
 This hook uses our license header by default.
 
