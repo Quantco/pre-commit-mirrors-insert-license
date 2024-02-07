@@ -1,12 +1,15 @@
 ## insert-license-header (-conda) mirror
 
+> [!NOTE]
+> To follow our pre-commit hook mirror convention, this repo has been rename: `pre-commit-insert-license` => `pre-commit-mirrors-insert-license`.
+
 This pre-commit hook automatically inserts our license header at the beginning of source code files tracked by Git.
 
 Usage: (in `.pre-commit-config.yaml`)
 
 ```
 repos:
-  - repo: https://github.com/Quantco/pre-commit-insert-license
+  - repo: https://github.com/Quantco/pre-commit-mirrors-insert-license
     rev: "1.1.0"
     hooks:
       - id: insert-license
