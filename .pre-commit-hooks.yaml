@@ -1,6 +1,5 @@
--   id: insert-license
-    name: Insert license in comments
-    description: "Insert a short license disclaimer as a header comment in source files"
-    entry: insert-license --license-base64 Q29weXJpZ2h0IChjKSBRdWFudENvIHt5ZWFyX3N0YXJ0fS17eWVhcl9lbmR9ClNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBMaWNlbnNlUmVmLVF1YW50Q28K
-    language: conda
-    types: [text]
+- id: insert-license-header-conda
+  name: insert-license-header-conda
+  description: 'This pre-commit hook automatically inserts our license header at the beginning of source code files tracked by Git.'
+  entry: insert-license --license-base64 Q29weXJpZ2h0IChjKSBRdWFudENvIHt5ZWFyX3N0YXJ0fS17eWVhcl9lbmR9ClNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBMaWNlbnNlUmVmLVF1YW50Q28K
+  language: conda
