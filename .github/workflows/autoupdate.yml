@@ -1,8 +1,9 @@
 name: Autoupdate
+
 on:
  workflow_dispatch:
  schedule:
-   - cron: "0 0 * * *"
+   - cron: "0 0 * * 0"
 
 defaults:
   run:
@@ -16,8 +17,6 @@ jobs:
     steps:
       - name: Checkout branch
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
       - name: Set up Conda env
         uses: mamba-org/setup-micromamba@8767fb704bd78032e9392f0386bf46950bdd1194
         with:
@@ -32,8 +31,8 @@ jobs:
           new_version=$(micromamba list -n check-env "$pkgname" --json | jq -r '.[0].version')
           if [[ "$new_version" != "$old_version" ]]; then
             sed -i "s/$old_version/$new_version/g" environment.yml
-            echo "pkgname=$pkgname" >> "$GITHUB_OUTPUT"
-            echo "new-version=$new_version" >> "$GITHUB_OUTPUT"
+            echo "pkgname=$pkgname" >> $GITHUB_OUTPUT
+            echo "new-version=$new_version" >> $GITHUB_OUTPUT
           fi
       - uses: peter-evans/create-pull-request@b1ddad2c994a25fbc81a28b3ec0e368bb2021c50
         if: steps.versions.outputs.pkgname

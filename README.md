@@ -1,23 +1,20 @@
-## insert-license-header (-conda) mirror
+# insert-license-header pre-commit hook
 
-> [!NOTE]
-> To follow our pre-commit hook mirror convention, this repo has been rename: `pre-commit-insert-license` => `pre-commit-mirrors-insert-license`.
+pre-commit hook of insert-license-header with conda as a `language` / package manager.
 
-This pre-commit hook automatically inserts our license header at the beginning of source code files tracked by Git.
+For pre-commit: see [here](https://github.com/pre-commit/pre-commit)
 
-Usage: (in `.pre-commit-config.yaml`)
+For insert-license-header: see [here](https://github.com/thomasmarwitz/insert-license-header)
 
-```
-repos:
-  - repo: https://github.com/Quantco/pre-commit-mirrors-insert-license
-    rev: "1.1.0"
-    hooks:
-      - id: insert-license
-        types: [python]
-        args:
-          - --dynamic-years
-          - --comment-style
-          - "#"
+## Using insert-license-header with pre-commit and conda:
+
+Add this to your `.pre-commit-config.yaml`
+
+```yaml
+ - repo: https://github.com/quantco/pre-commit-mirrors-insert-license-header
+   rev: ''  # Use the sha / tag you want to point at
+   hooks:
+     - id: insert-license-header-conda
 ```
 
 > [!WARNING]
@@ -52,3 +49,4 @@ To remove all license headers, temporarily add the `--remove-header` arg in
 your `.pre-commit-config.yaml`. Run the hook on all files: `pre-commit run insert-license -a`.
 
 For more configuration options see the conda-packaged tool [insert-license-header](https://github.com/thomasmarwitz/insert-license-header) that exposes the `insert-license-header` executable, the original repository [Lucas-C/pre-commit-hooks](https://github.com/Lucas-C/pre-commit-hooks) and [Pre-Commit](https://pre-commit.com/).
+

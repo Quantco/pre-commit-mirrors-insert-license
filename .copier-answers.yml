@@ -1,0 +1,9 @@
+# This file is managed by Copier; DO NOT EDIT OR REMOVE.
+_commit: v0.1.7
+_src_path: git@github.com:quantco/copier-template-pre-commit-mirrors
+conda_package: insert-license-header
+description: This pre-commit hook automatically inserts our license header at the
+    beginning of source code files tracked by Git.
+entry: insert-license --license-base64 Q29weXJpZ2h0IChjKSBRdWFudENvIHt5ZWFyX3N0YXJ0fS17eWVhcl9lbmR9ClNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBMaWNlbnNlUmVmLVF1YW50Q28K
+tool: insert-license-header
+url: https://github.com/thomasmarwitz/insert-license-header
