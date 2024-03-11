@@ -7,11 +7,17 @@ jobs:
   keep-alive:
     name: Alive
     runs-on: ubuntu-latest
+    permissions:
+      actions: write
     steps:
       - uses: actions/checkout@v4
+<<<<<<< before updating
       - uses: gautamkrishnar/keepalive-workflow@306efe4fc63923e36571682b4f4b3e3eee8b6625
         with:
           commit_message: Ah ah ah, stayin' alive
           committer_username: ForrestQuant
           committer_email: forrestquant@users.noreply.github.com
           time_elapsed: 50 # days
+=======
+      - uses: gautamkrishnar/keepalive-workflow@14b7c72e9af14bddbbc1022a6f0bd20b1eac2619
+>>>>>>> after updating
