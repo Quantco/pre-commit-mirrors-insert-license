@@ -7,16 +7,23 @@ on:
   pull_request:
 
 jobs:
+  pre-commit-checks:
+    name: Pre-commit Checks
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+      - name: Run pre-commit-conda
+        uses: quantco/pre-commit-conda@v1
   env:
     name: Test env
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
       - name: Set up Conda env
-        uses: mamba-org/setup-micromamba@422500192359a097648154e8db4e39bdb6c6eed7
+        uses: mamba-org/setup-micromamba@0dea6379afdaffa5d528b3d1dabc45da37f443fc
         with:
           environment-file: environment.yml
           environment-name: test-env

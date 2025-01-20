@@ -18,7 +18,7 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@v4
       - name: Set up Conda env
-        uses: mamba-org/setup-micromamba@422500192359a097648154e8db4e39bdb6c6eed7
+        uses: mamba-org/setup-micromamba@0dea6379afdaffa5d528b3d1dabc45da37f443fc
         with:
           environment-file: environment.yml
           environment-name: check-env
@@ -34,7 +34,7 @@ jobs:
             echo "pkgname=$pkgname" >> $GITHUB_OUTPUT
             echo "new-version=$new_version" >> $GITHUB_OUTPUT
           fi
-      - uses: peter-evans/create-pull-request@a4f52f8033a6168103c2538976c07b467e8163bc
+      - uses: peter-evans/create-pull-request@67ccf781d68cd99b580ae25a5c18a1cc84ffff1f
         if: steps.versions.outputs.pkgname
         with:
           commit-message: "Update ${{ steps.versions.outputs.pkgname }} to ${{ steps.versions.outputs.new-version }}"
